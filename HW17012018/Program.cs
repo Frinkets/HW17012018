@@ -89,11 +89,32 @@ namespace HW17012018
         }
         public void task4()
         {
+        //Cоздать запрос с использованием ключевого слова «let»,
+            //и выгрузить данные только где столбец «WorkingPeople» > 1.
 
+            var task4 =
+                from w in db.Area
+                let w1 = w.WorkingPeople > 1
+                select w1;
         }
         public void task5()
         {
+            //Создать запрос с использованием ключевого слова «into»,  
+            //где в первом запросе должны вывестись следующие данные: 
+            //ParentId, FullName, ParentId, Dependence, 
+            //далее во втором запросе отобразить только те зоны у которых Dependence > 0.
 
+            var task5 =
+                from w in db.Area
+                select new
+                {
+                    w.ParentId,
+                    w.FullName,
+                    w.Dependence
+                } into w1
+
+                where w1.Dependence > 0
+                select w1; 
         }
     }
 }
